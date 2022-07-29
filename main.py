@@ -1,7 +1,11 @@
+from lib2to3.pgen2 import token
 import nextcord
 from nextcord.ext import commands
+import os
 
-intents = nextcord.Intents().all()
+token = os.getenv('BOT_TOKEN')
+intents = nextcord.Intents.all()
+intents.members = True
 client = commands.Bot(command_prefix="ng.", intents=intents)
 
 @client.event
@@ -12,4 +16,4 @@ async def on_ready():
 async def hello(ctx):
     await ctx.send("bro shut yo btch a$$ up")
 
-client.run("")
+client.run(token)
